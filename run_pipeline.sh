@@ -49,11 +49,7 @@ years=(
 "2024"
 )
 
-# CONFIG="EQUES/TinySwallow-Stratos-1.5B"
-# CONFIG="SakanaAI/TinySwallow-1.5B-Instruct"
-# CONFIG="Qwen/Qwen2.5-7B-Instruct"
-CONFIG="bespokelabs/Bespoke-Stratos-7B"
-
+CONFIG="EQUES/TinySwallow-Stratos-1.5B"
 PROMPT_FILE="scripts/prompts/prompt_yakugaku.jsonl"
 OUT_DIR="./baseline_results"
 
