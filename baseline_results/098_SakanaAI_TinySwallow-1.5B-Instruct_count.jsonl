@@ -1,0 +1,9 @@
+{"category": "Biology", "count": 4, "total_count": 16, "accuracy": 0.25}
+{"category": "Chemistry", "count": 0, "total_count": 3, "accuracy": 0.0}
+{"category": "Hygiene", "count": 8, "total_count": 32, "accuracy": 0.25}
+{"category": "Law", "count": 9, "total_count": 28, "accuracy": 0.32142857142857145}
+{"category": "Pathology", "count": 17, "total_count": 36, "accuracy": 0.4722222222222222}
+{"category": "Pharmacology", "count": 8, "total_count": 34, "accuracy": 0.23529411764705882}
+{"category": "Pharmacy", "count": 12, "total_count": 33, "accuracy": 0.36363636363636365}
+{"category": "Physics", "count": 2, "total_count": 11, "accuracy": 0.18181818181818182}
+{"category": "Practice", "count": 28, "total_count": 63, "accuracy": 0.4444444444444444}

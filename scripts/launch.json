@@ -1,0 +1,8 @@
+{
+    "name": "Python: Current File",
+    "type": "python",
+    "request": "launch",
+    "program": "${file}",
+    "console": "integratedTerminal",
+    "args": ["--in-file", "../data/2012/097.jsonl", "--config", "open", "--prompt-file", "prompts/prompt_yakugaku.jsonl"]
+}

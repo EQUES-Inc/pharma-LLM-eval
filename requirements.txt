@@ -1,0 +1,6 @@
+jsonlines==4.0.0
+mojimoji==0.0.13
+openai==1.55.0
+vllm==0.6.4.post1
+pandas
+openpyxl
