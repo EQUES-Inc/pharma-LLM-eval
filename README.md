@@ -16,27 +16,14 @@ See our paper for more detail.
 **Usage**
 1. `run_pipeline.sh`中のl52前後にあるCONFIGを変更する.
 2. `run_pipeline.sh`中のl67にあるCUDA_VISIBLE_DEVICESを変更する. (複数指定するとエラーが生じやすい.)
-3. `sbatch run.sh` を実行する.
+3. 評価の実行.
+    - (slurm利用の場合)`sbatch run.sh` を実行する.
+    - (それ以外) `singularity shell --nv eval.sif` の後, `bash run_pipeline.sh`
 
 **Output**
 - モデルの応答：`/baseline_results` 以下に`<年>_<モデル>.jsonl` というファイルが作成されます.
 - モデルの正答数：`/baseline_results` 以下に`<年>_<モデル>_count.jsonl` というファイルが作成されます.
 
-
-## IgakuQA
-
-**Benchmark Collection**
-
-
-## JMMLU (related to medicine)
-
-**Benchmark Collection**
-
-
-## To do list
-[ ] Add IgakuQA
-[ ] Add JMMLU
-[ ] Add papers
 
 ## Acknowledgement
 This repository is partly forked from [IgakuQA]().

@@ -2,8 +2,11 @@
 score_results
 data/*.py
 data/*.jsonl
-
-
+*.log
+*.csv
+*.sif
+wandb
+baseline_results
 
 # Byte-compiled / optimized / DLL files
 __pycache__/

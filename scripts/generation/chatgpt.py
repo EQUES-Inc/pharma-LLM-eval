@@ -66,14 +66,14 @@ def run_openmodel(questions, model, prompt=None):
         raise RuntimeError("GPUが利用可能ではありません。'device' を 'cpu' に設定してください。")
 
     # LLMの初期化
-    llm = LLM(model=model_name, device="cuda", tensor_parallel_size=tensor_parallel_size)
+    llm = LLM(model=model_name, device="cuda", tensor_parallel_size=tensor_parallel_size,trust_remote_code=True,max_model_len=4096)
 
     # サンプリングパラメータを設定
     sampling_params = SamplingParams(
         temperature=0.4,
         top_p=0.9,
         max_tokens=1024,
-        stop="<|eot_id|>",  # 正しい終了トークンを確認
+        stop="<|im_end|>" #check: base modelだと"<|endoftext|> chat modelだと"<|im_end|>"という理解であっているか.
     )
 
     preds = []
@@ -87,30 +87,48 @@ def run_openmodel(questions, model, prompt=None):
         while not done:
             try:
                 first_part = model_name.split("/")[0]
-                if first_part in ["elyza", "tokyotech-llm", "meta-llama", "turing-motors", "google", "Qwen"]:
-                    tokenizer = AutoTokenizer.from_pretrained(model_name)
+                if first_part in ["elyza", "tokyotech-llm", "meta-llama", "turing-motors", "google", "Qwen", "EQUES"]:
+                    tokenizer = AutoTokenizer.from_pretrained(model_name, trust_remote_code=True)
                     prompt_applied = tokenizer.apply_chat_template(
                         chatgpt_input,
                         tokenize=False,
                         add_generation_prompt=True
                     )
-                else:
+                else: #check: 本fileの最下部に定義された関数. 原則使わずに, tokenizerに付与のchat templateを利用する.
                     prompt_applied = apply_chat_template(
                         message=chatgpt_input,
                         tokenize=False,
                         add_generation_prompt=True
                     )
+                # import pdb; pdb.set_trace() #chekc: prompt_appliedやtokenizerが問題ないか要チェック
+
                 # モデルの実行
                 outputs_from_llm = llm.generate(prompt_applied, sampling_params)
                 answer = outputs_from_llm[0].outputs[0].text.strip()
-                answer = answer.split("\n")[0].strip().split(":")[0].strip() #answerをさらにinstruction-followingしてない場合に対応
+                print("="*30)
+                print("Raw Output from LLM, Before Postprocessing")
+                print(answer)
+
+
+                ### Adhocな後処理. #check: Instruction-followingしないモデルが問題となる.
+                if len(answer) >= 3:
+                    if answer[1] == ",":
+                        answer = answer[:3]
+                    else:
+                        answer = answer[0]
+                else:
+                    answer = answer[0]
+
+                print("Output from LLM, After Postprocessing")
+                print(answer)
+
                 if answer is None:
                     done = False
-                    print('\nfailed')
+                    print('\nfailed(1)')
                 else:
                     done = True
             except:
-                print('\nfailed')
+                print('\nfailed(2)')
                 time.sleep(5.0)
                 nb_trials += 1
             if nb_trials == 3:
