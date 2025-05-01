@@ -1,15 +1,7 @@
 import pandas as pd
 import glob
 
-
-# model_name = "SakanaAI_TinySwallow"
-# model_name = "EQUES_TinySwallow"
-# model_name = "Qwen_Qwen2.5"
-# model_name = "bespokelabs_Bespoke"
-# model_name = "tokyotech-llm_Llama-3.1-Swallow-8B-Instruct-v0.3"
-# model_name = "EQUES_Qwen2.5-7B_ja-cleaned"
-model_name = "EQUES_dare_ties"
-
+model_name = "Qwen2.5-7B-Instruct"
 files = sorted(glob.glob(f"./baseline_results/*_{model_name}*_count.jsonl"))
 print(len(files))
 correct = 0

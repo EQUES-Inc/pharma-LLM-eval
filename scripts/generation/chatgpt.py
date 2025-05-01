@@ -100,7 +100,6 @@ def run_openmodel(questions, model, prompt=None):
                         tokenize=False,
                         add_generation_prompt=True
                     )
-                # import pdb; pdb.set_trace() #chekc: prompt_appliedやtokenizerが問題ないか要チェック
 
                 # モデルの実行
                 outputs_from_llm = llm.generate(prompt_applied, sampling_params)
@@ -109,8 +108,9 @@ def run_openmodel(questions, model, prompt=None):
                 print("Raw Output from LLM, Before Postprocessing")
                 print(answer)
 
-
                 ### Adhocな後処理. #check: Instruction-followingしないモデルが問題となる.
+                answer = answer.split("\n")[0].split(":")[0].strip()
+                answer = answer.replace(" ","")
                 if len(answer) >= 3:
                     if answer[1] == ",":
                         answer = answer[:3]
@@ -118,6 +118,9 @@ def run_openmodel(questions, model, prompt=None):
                         answer = answer[0]
                 else:
                     answer = answer[0]
+                
+                if answer[-1] == ",":
+                    answer = answer[:-1]
 
                 print("Output from LLM, After Postprocessing")
                 print(answer)
@@ -196,7 +199,7 @@ def run_api(model, messages):
       messages=messages,
     )
 
-# チャットテンプレート関数
+# チャットテンプレート関数, Don't use
 def apply_chat_template(message, tokenize=False, add_generation_prompt=True):
     template = ""
     for msg in message:

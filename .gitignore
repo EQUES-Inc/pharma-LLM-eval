@@ -5,7 +5,7 @@ data/*.jsonl
 *.log
 *.csv
 *.sif
-wandb
+wandb/
 baseline_results
 
 # Byte-compiled / optimized / DLL files

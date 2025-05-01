@@ -49,12 +49,7 @@ years=(
 "2024"
 )
 
-# CONFIG="EQUES/Qwen2.5-7B_ja-cleaned"
-CONFIG="Qwen/Qwen2.5-7B"
-# CONFIG="Qwen/Qwen2.5-7B-Instruct"
-# CONFIG="EQUES/Qwen2.5-7B_ja-cleaned_sft-Yakugaku"
-# CONFIG="EQUES/dare_ties"
-
+CONFIG="Qwen/Qwen2.5-7B-Instruct"
 PROMPT_FILE="scripts/prompts/prompt_yakugaku.jsonl"
 OUT_DIR="./baseline_results"
 
@@ -78,9 +73,6 @@ for i in "${!input[@]}"; do
         --prompt-file "${PROMPT_FILE}" \
         --out-dir "${OUT_DIR}" \
         --text-only # 必要なら付ける
-
-    # 必要に応じてここで結果ファイルを回収したり、
-    # まとめ処理(evaluateやexcel_outputなど)を行う
 done
 
 # python scripts/pipeline.py --config "${CONFIG}" --evaluate-only
