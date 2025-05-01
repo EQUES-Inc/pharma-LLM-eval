@@ -53,12 +53,12 @@ This repository is partly forked from [IgakuQA](https://github.com/jungokasai/Ig
 
 ## NayoseBench（NayoseQA）
 
-Switch to the branch **NayoseBench**.
+Move to **NayoseBench/**.
 
 
 ## SogoBench（SogoCheck）
 
-Switch to the branch **SogoBench**.
+Move to **SogoBench/**.
 
 
 ## Citations
