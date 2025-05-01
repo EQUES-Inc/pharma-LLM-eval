@@ -41,6 +41,8 @@ See our paper for more detail.
 2. Change CUDA_VISIBLE_DEVICES in line 69 of `run_pipeline.sh`.
 3. Run `bash run_pipeline.sh`.
 
+You may add `--evaluate-only` to line 69 of `run_pipeline.sh` if only evaluation is needed.
+
 **Output**
 - `/baseline_results/<year_ID>_<model_name>.jsonl` 
 - `/baseline_results<year_ID>_<model_name>_count.jsonl` 

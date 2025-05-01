@@ -53,7 +53,7 @@ CONFIG="Qwen/Qwen2.5-7B-Instruct"
 PROMPT_FILE="scripts/prompts/prompt_yakugaku.jsonl"
 OUT_DIR="./baseline_results"
 
-huggingface-cli login --token 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 --add-to-git-credential
+huggingface-cli login --token <YOUR_TOKEN> --add-to-git-credential
 
 # 結果を格納する配列（必要であれば）
 output=()
@@ -74,7 +74,3 @@ for i in "${!input[@]}"; do
         --out-dir "${OUT_DIR}" \
         --text-only # 必要なら付ける
 done
-
-# python scripts/pipeline.py --config "${CONFIG}" --evaluate-only
-
-# 必要であれば、ループ後にexcel_outputなどを別途呼び出すスクリプトや処理をここで行う
