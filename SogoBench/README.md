@@ -10,8 +10,13 @@ SogoCheck is a task focused on detecting inconsistencies within documents such a
 Notice that we do not rely on any translation of sources from other languages (e.g., English) or countries, and the benchmark comes solely from resources that are originally written in Japanese.
 See our paper for more detail.
 
+**Difficulty**
 
-**Requirement**
+- `easy.jsonl`: Easy 200 questions where input and reference is almost identical.
+- `medium.jsonl`: 162 questions where input and reference is not identical.
+- `hard.json`: Coming soon ...
+
+**Requirement**   
 vllm
 
 **Usage**

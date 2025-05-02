@@ -13,7 +13,7 @@ if not is_openai:
     from transformers import AutoModelForCausalLM, AutoTokenizer
     from vllm import LLM, SamplingParams
 
-    model_name = "<MODEL_NAME>"
+    model_name = "Qwen/Qwen2.5-7B-Instruct"
     model = LLM(model=model_name)
     sampling_params = SamplingParams(temperature=0.8, top_p=0.95, max_tokens=4096)
     tokenizer = AutoTokenizer.from_pretrained(model_name)
@@ -180,11 +180,11 @@ correct_df = []
 for data1 in tqdm(dataset):
     
     #for easy
-    orig_text = data1["in"]
-    sogo_text = data1["out"]
-    #for medium
-    # orig_text = data1["original"]
+    # orig_text = data1["in"]
     # sogo_text = data1["out"]
+    #for medium
+    orig_text = data1["original"]
+    sogo_text = data1["out"]
 
     prompt = create_prompt(orig_text,sogo_text,num_shot=3)
     messages = [
@@ -241,10 +241,13 @@ for data1 in tqdm(dataset):
             except:
                 pass
     
-    
+    def clean(txt):
+        return txt.replace(" ","").replace("．","。").replace("，","、")
+
     def is_pair_contained(correct_pair, predicted_pairs):
         for pred_pair in predicted_pairs:
-            if correct_pair[0] in pred_pair[0] and correct_pair[1] in pred_pair[1]:
+            # if correct_pair[0] in pred_pair[0] and correct_pair[1] in pred_pair[1]:
+            if clean(correct_pair[0]) in clean(pred_pair[0]) and clean(correct_pair[1]) in clean(pred_pair[1]):
                 return True
         return False
 
