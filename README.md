@@ -63,6 +63,31 @@ Move to **SogoBench/**.
 
 ## Citations
 ```
-Coming soon...
+@inproceedings{ono-etal-2025-japanese,
+    title = "A {J}apanese Language Model and Three New Evaluation Benchmarks for Pharmaceutical {NLP}",
+    author = "Ono, Shinnosuke  and
+      Sukeda, Issey  and
+      Fujii, Takuro  and
+      Buma, Kosei  and
+      Sasaki, Shunsuke",
+    editor = "Inui, Kentaro  and
+      Sakti, Sakriani  and
+      Wang, Haofen  and
+      Wong, Derek F.  and
+      Bhattacharyya, Pushpak  and
+      Banerjee, Biplab  and
+      Ekbal, Asif  and
+      Chakraborty, Tanmoy  and
+      Singh, Dhirendra Pratap",
+    booktitle = "Proceedings of the 14th International Joint Conference on Natural Language Processing and the 4th Conference of the Asia-Pacific Chapter of the Association for Computational Linguistics",
+    month = dec,
+    year = "2025",
+    address = "Mumbai, India",
+    publisher = "The Asian Federation of Natural Language Processing and The Association for Computational Linguistics",
+    url = "https://aclanthology.org/2025.ijcnlp-long.72/",
+    pages = "1316--1332",
+    ISBN = "979-8-89176-298-5",
+    abstract = "We present **JPharmatron**, a Japanese domain-specific large language model (LLM) for the pharmaceutical field, developed through continual pre-training on two billion Japanese pharmaceutical tokens and eight billion English biomedical tokens. For rigorous evaluation, we introduce **JPharmaBench**, a benchmark suite consisting of three new benchmarks: YakugakuQA, based on national pharmacist licensing exams; NayoseQA, which tests cross-lingual synonym and terminology normalization; and SogoCheck, a novel task involving cross-document consistency checking.We evaluate our model against open-source medical LLMs and commercial models, including GPT-4o. Experimental results show that **JPharmatron** outperforms existing open models and achieves competitive performance with commercial ones.Interestingly, even GPT-4o performs poorly on SogoCheck, suggesting that cross-sentence consistency reasoning remains an open challenge.**JPharmatron** enables secure and local model deployment for pharmaceutical tasks, where privacy and legal constraints limit the use of closed models. Besides, **JPharmaBench** offers a reproducible framework for evaluating Japanese pharmaceutical natural language processing. Together, they demonstrate the feasibility of practical and cost-efficient language models for Japanese healthcare and pharmaceutical sectors.Our model, codes, and datasets are available on HuggingFace: https://huggingface.co/collections/EQUES/jpharmatron and https://huggingface.co/collections/EQUES/jpharmabench."
+}
 ```
 
